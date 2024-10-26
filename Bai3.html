@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3</title>
+    
+</head>
+<body>
+    <h1>Đếm Cặp Số Có Tổng Chia Hết Cho k</h1>
+    <label for="arrayInput">Nhập mảng số nguyên (phân cách bởi dấu phẩy):</label>
+    <input type="text" id="arrayInput" placeholder="Ví dụ: 1,2,3,4,5,6">
+    <br><br>
+    <label for="kInput">Nhập số nguyên dương k:</label>
+    <input type="number" id="kInput" min="1" placeholder="Nhập k">
+    <br><br>
+    <button onclick="calculate()">Đếm Cặp Số</button>
+    
+    <p id="result"></p>
+    <script>
+        function countPairs(arr, k) {
+            let count = 0;
+            let pairs = [];
+
+            // Duyệt qua tất cả các cặp số
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    if ((arr[i] + arr[j]) % k === 0) {
+                        count++;
+                        pairs.push(`(${arr[i]}, ${arr[j]})`);
+                    }
+                }
+            }
+            
+            // Trả về kết quả bao gồm số lượng cặp và các cặp số thỏa mãn
+            return { count, pairs };
+        }
+
+        function calculate() {
+            // Lấy dữ liệu từ người dùng
+            const arrInput = document.getElementById("arrayInput").value;
+            const k = parseInt(document.getElementById("kInput").value);
+
+            // Chuyển đổi chuỗi mảng đầu vào thành mảng số nguyên
+            const arr = arrInput.split(",").map(Number);
+
+            // Kiểm tra đầu vào hợp lệ
+            if (isNaN(k) || k <= 0) {
+                alert("Vui lòng nhập số nguyên dương hợp lệ cho k");
+                return;
+            }
+            if (arr.length > 50 || arr.some(isNaN)) {
+                alert("Vui lòng nhập tối đa 50 số nguyên trong mảng, phân cách bằng dấu phẩy");
+                return;
+            }
+
+            // Tính toán các cặp số thỏa mãn yêu cầu
+            const result = countPairs(arr, k);
+
+            // Hiển thị kết quả
+            document.getElementById("result").innerText = 
+                `Có ${result.count} cặp số thỏa mãn yêu cầu: ${result.pairs.join(", ")}`;
+        }
+    </script>
+</body>
+</html>

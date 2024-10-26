@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 1</title>
+</head>
+<body>
+    <h3>Câu 1: Tìm bội chung của 3 và 5 trong mảng và cộng lại</h3>
+    <label>Nhập vào tối đa 20 phần tử số nguyên cho mảng (Ví dụ: 1,3,4,6,....):</label>
+    <input style="width: 400px;" type="text" id="arrayInput"
+        placeholder="Nhập các phần tử của mảng và cách nhau bằng dấu phẩy">
+    <br><br>
+    <button onclick="checkSum()">Khởi tạo mảng và tính tổng bội chung 3 và 5</button>
+    <p id="arrayDisplay"></p>
+    <br>
+    <p id="result"></p>
+    <script>
+        // Khởi tạo mảng số nguyên
+        let array = [];
+
+        // Hàm khởi tạo mảng với tối đa 20 phần tử từ input
+        function checkSum() {
+            let input = document.getElementById("arrayInput").value;
+            // Tách chuỗi nhập liệu thành các phần tử cách nhau bởi dấu phẩy và chuyển đổi thành số nguyên
+            let arr = input.split(',').map(item => parseInt(item));
+
+            // Kiểm tra nếu mảng có nhiều hơn 20 phần tử hoặc có phần tử không hợp lệ
+            // includes là phương thức này trả về true nếu mảng chứa phần tử được chỉ định, ngược lại trả về false
+            // ở dưới đây arr.includes(NaN) nghĩa là nếu có giá trị là NaN thì trả về true và thực hiện in ra alert và trả về
+            if (arr.length > 20 || arr.includes(NaN)) {
+                alert("Hãy nhập tối đa 20 số nguyên hợp lệ!");
+                return;
+            }
+            // Nếu hợp lệ, gán giá trị cho mảng
+            array = arr;
+            document.getElementById("arrayDisplay").innerHTML = "Mảng đã nhập: " + array.join(', ');
+
+            // Tìm các số là bội chung của 3 và 5 và tính tổng
+            let multiples3And5  = [];
+            let sum = 0;
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] % 3 === 0 && array[i] % 5 === 0) {
+                    // Nếu phần tử là bội chung của 3 và 5, thêm vào mảng và tính tổng
+                    multiples3And5.push(array[i]);
+                    sum += array[i];
+                }
+            }
+            // Hiển thị kết quả ra màn hình
+            document.getElementById('result').innerHTML = 
+                `Các số là bội chung của 3 và 5: ${multiples3And5 .join(', ')}<br>Tổng của các số đó: ${sum}`;
+        }
+    </script>
+</body>
+</html>

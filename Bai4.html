@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        table {
+            width: 100%;
+        }
+
+        tr {
+            height: 50px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: rgb(200, 200, 200);
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            width: 70px;
+            height: 30px;
+            border: none;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        #banner {
+            padding: 4px;
+            margin: 0;
+            background-color: green;
+            text-align: center;
+            color: white;
+        }   
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <h1>QUẢN LÝ KHÁCH HÀNG CỦA CÔNG TY BẤT ĐỘNG SẢN</h1>
+    </div>
+    <div>
+        <h2>Thêm khách hàng vào màn hình</h2>
+    </div>
+    <div style="width: 100%; ">
+        <input style="width: 200px; height: 30px;" type="text" id="maKhachHang" placeholder="Mã khách hàng">
+        <input style="width: 200px; height: 30px;" type="text" id="tenKhachHang" placeholder="Tên khách hàng">
+        <input style="width: 200px; height: 30px;" type="number" id="soDienThoai" placeholder="Số điện thoại">
+        <input style="width: 200px; height: 30px;" type="text" id="diaChi" placeholder="Địa chỉ">
+        <input style="width: 300px; height: 30px;" type="email" id="email" placeholder="email">
+        <button id="add">THÊM</button>
+    </div> <br> <br>
+    <br> <br>
+    <div id="result"></div>
+    <script src="Bai4.js"></script>
+</body>
+
+</html>

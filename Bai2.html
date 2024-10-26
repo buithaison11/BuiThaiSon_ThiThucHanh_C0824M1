@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2</title>
+    
+</head>
+<body>
+    <h1>Làm Tròn Điểm Học Sinh Và Kiểm Tra Có Đạt Không</h1>
+    <label for="scoreInput">Nhập điểm của học sinh:</label>
+    <input type="number" id="scoreInput" placeholder="Nhập điểm từ 0 đến 100">
+    <button onclick="checkScore()">Tính điểm sau khi làm tròn</button>
+    
+    <p id="result"></p>
+    <script>
+        function roundScore(score) {
+            // Nếu điểm nhỏ hơn 48, không làm tròn
+            if (score < 48) return score;
+            
+            // Tìm bội số của 5 
+            let multiple5 = score;
+            while (multiple5 % 5 !== 0) {
+                multiple5++;
+            }
+
+            // Nếu khoảng cách tới bội số 5 tiếp theo nhỏ hơn 3, làm tròn lên
+            if (multiple5 - score < 3) {
+                return multiple5;
+            } else {
+                return score;
+            }
+        }
+
+        function checkScore() {
+            // Lấy giá trị điểm từ ô nhập liệu
+            const scoreInput = document.getElementById("scoreInput").value;
+            const score = parseInt(scoreInput);
+
+            // Kiểm tra đầu vào hợp lệ
+            if (isNaN(score) || score < 0 || score > 100) {
+                alert("Vui lòng nhập điểm hợp lệ từ 0 đến 100");
+                return;
+            }
+
+            // Tính toán điểm sau khi làm tròn
+            const roundedScore = roundScore(score);
+
+            // Kiểm tra đạt hay trượt
+            const resultText = roundedScore >= 50 ? "Đạt" : "Trượt";
+
+            // Hiển thị kết quả
+            document.getElementById("result").innerText = `Điểm sau khi làm tròn: ${roundedScore} và kết quả: ${resultText} `;
+        }
+    </script>
+</body>
+</html>
